@@ -80,9 +80,9 @@ public class Controller implements Observable {
 		w.register(img_display);
 		w.register(list_display);
 		wagons.add(w);
-		log.add("Wagon " + w.getId() + " created with " + w.getType().getNumberOfSeats() + " seats");
+		log.add("Wagon " + w.getId() + " created with " + numseats + " seats");
 		try {
-			addToLogFile("Wagon " + w.getId() + " created with " + w.getType().getNumberOfSeats() + " seats");
+			addToLogFile("Wagon " + w.getId() + " created with " + numseats + " seats");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -281,23 +281,6 @@ public class Controller implements Observable {
 		}
 		this.notifyObservers();
 		train.notifyObservers();
-	}
-
-	public void getSeatsFromType(String id) {
-		Type t = getType(id);
-		int a = t.getNumberOfSeats();
-		if (Controller.getInstance().checkTypes(id)) {
-			log.add("Type: " + id + " has " + a + " seats");
-			try {
-				addToLogFile("Type " + id + " has " + a + " seats");
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		} else {
-			log.add(" Type is not created ");
-		}
-		this.notifyObservers();
-		t.notifyObservers();
 	}
 	
 	public void numseatsTrain(String name){

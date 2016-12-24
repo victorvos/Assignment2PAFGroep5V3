@@ -21,7 +21,6 @@ public class Get implements Command{
 		if(spaceLast < 0){
 			JOptionPane.showMessageDialog(null, "Not a valid command.\nNo train of wagon is selected.", "ERROR", JOptionPane.ERROR_MESSAGE);
 		}else{
-//			String[] receivedString = cmd.split(" ");
 			String type = cmd.split(" ")[0];
 			String name = cmd.split(" ")[1];
 			if(type.equals("train")){
