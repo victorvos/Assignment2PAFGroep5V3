@@ -1,4 +1,4 @@
-grammar RichRail;
+grammar ;
 
 command 	: New | Add | Get | Delete | Remove;
 
