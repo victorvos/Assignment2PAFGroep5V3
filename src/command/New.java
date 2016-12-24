@@ -68,7 +68,7 @@ public class New implements Command{
 				if(!Controller.getInstance().checkTypes(typeId)){
 					JOptionPane.showMessageDialog(null, "Type "+typeId+" does not exist\n Create type first", "ERROR", JOptionPane.ERROR_MESSAGE);
 				}else{
-					Controller.getInstance().createWagon(id, Controller.getInstance().getType(typeId));
+					Controller.getInstance().createWagon(id, Controller.getInstance().getType(typeId),20);
 				}
 				
 			}
@@ -78,6 +78,6 @@ public class New implements Command{
 	}
 
 	private void createType(String id, int numseats){
-		Controller.getInstance().createType(id, numseats);
+		Controller.getInstance().createType(id);
 	}
 }

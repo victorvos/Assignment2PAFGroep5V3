@@ -75,8 +75,8 @@ public class Controller implements Observable {
 		t.notifyObservers();
 	}
 
-	public void createWagon(String id, Type type) {
-		Wagon w = new Wagon(id, type);
+	public void createWagon(String id, Type type, int numseats) {
+		Wagon w = new Wagon(id, type, numseats);
 		w.register(img_display);
 		w.register(list_display);
 		wagons.add(w);
@@ -90,11 +90,8 @@ public class Controller implements Observable {
 		w.notifyObservers();
 	}
 
-	public void createType(String id, int numseats) {
+	public void createType(String id) {
 		Type t = new Type(id);
-		if (numseats > 0) {
-			t.setNumberOfSeats(numseats);
-		}
 		t.register(list_display);
 		types.add(t);
 		log.add("Type " + t.getId() + " created");
@@ -302,6 +299,41 @@ public class Controller implements Observable {
 		this.notifyObservers();
 		t.notifyObservers();
 	}
+	
+	public void numseatsTrain(String name){
+		Train t = getTrain(name);
+		int numseats = t.getNumseats();
+		if(Controller.getInstance().checkTrains(name)){
+			log.add("Train " + name + " has " + numseats + " seats");
+			try {
+				addToLogFile("Train " + name + " has " + numseats + " seats");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} else {
+			log.add(" Train does not exist ");
+		}
+		this.notifyObservers();
+		t.notifyObservers();
+		}
+	
+	public void numseatsWagon(String name){
+		Wagon w = getWagon(name);
+		int numseats = w.getNumSeats();
+		if(Controller.getInstance().checkWagons(name)){
+			log.add("Wagon " + name + " has " + numseats + " seats");
+			try {
+				addToLogFile("Wagon " + name + " has " + numseats + " seats");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} else {
+			log.add(" Wagon does not exist ");
+		}
+		this.notifyObservers();
+		w.notifyObservers();
+		}
+	
 
 	// Display getters and setters
 	public static void setLog_display(Log_display log_display) {

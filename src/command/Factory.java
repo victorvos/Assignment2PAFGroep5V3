@@ -32,7 +32,9 @@ public class Factory {
 			}
 			else if(trigger.equalsIgnoreCase("remove")){
 				return new Remove(command2);
-			}else{
+			}
+			
+			else{
 				JOptionPane.showMessageDialog(null, "Not a valid command", "ERROR", JOptionPane.ERROR_MESSAGE);
 			}
 		}
