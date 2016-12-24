@@ -11,9 +11,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import command.Factory;
 import controller.Controller;
-
-import Command.Factory;
 
 
 
