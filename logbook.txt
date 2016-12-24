@@ -1,0 +1,54 @@
+14:38:52.228 Train tr1 created
+14:38:52.228 Train tr2 created
+14:38:52.228 Type passenger created
+14:38:52.228 Wagon wg1 created with 20 seats
+14:38:52.228 Wagon wg1 attached to Traintr2
+14:38:52.228 Type passenger has 20 seats
+14:38:52.228 Type passenger has 20 seats
+14:38:52.228 Type passenger has 20 seats
+14:38:52.228 Type passenger has 20 seats
+14:38:52.228 Type test created
+14:38:52.228 Wagon wg2 created with 20 seats
+14:38:52.228 Wagon wg2 attached to Traintr2
+14:38:52.228 Type passenger has 20 seats
+14:38:52.228 Type test has 20 seats
+14:56:22.914 Type klaas created
+14:56:22.914 Wagon wg1 created with 20 seats
+14:56:22.914 Wagon wg2 created with 20 seats
+14:56:22.914 Type klaas has 20 seats
+14:57:16.057 Type klaas 35 created
+15:49:55.065 Type loco created
+15:49:55.065 Wagon wg1 created with 20 seats
+15:51:53.354 Type tp1 created
+15:51:53.354 Wagon wg1 created with 20 seats
+15:51:53.354 Wagon wg1 has 20 seats
+15:51:53.354 Wagon wg1 has 20 seats
+15:59:35.732 Train tr1 created
+15:59:35.732 Type pr1 created
+15:59:35.732 Wagon wg1 created with 20 seats
+15:59:35.732 Wagon wg1 attached to Train tr1
+15:59:35.732 Train tr1 has 20 seats
+15:59:35.732 Wagon wg2 created with 20 seats
+15:59:35.732 Wagon wg2 attached to Train tr1
+15:59:35.732 Train tr1 has 20 seats
+15:59:35.732 Train tr1 has 20 seats
+15:59:35.732 Train tr1 has 20 seats
+15:59:35.732 Train tr1 has 20 seats
+15:59:35.732 Train tr1 has 20 seats
+16:03:52.281 Train tr1 created
+16:03:52.281 Type tp1 created
+16:03:52.281 Wagon wg1 created with 20 seats
+16:03:52.281 Wagon wg2 created with 20 seats
+16:03:52.281 Wagon wg1 attached to Train tr1
+16:03:52.281 Wagon wg2 attached to Train tr1
+16:03:52.281 Wagon wg2 has 20 seats
+16:03:52.281 Train tr1 has 40 seats
+16:03:52.281 Wagon wg3 created with 20 seats
+16:03:52.281 Train tr1 has 40 seats
+16:37:18.995 Type tp1 created
+16:37:18.995 Wagon wg1 created with 20 seats
+16:37:18.995 Wagon wg2 created with 30 seats
+16:37:18.995 Train tr1 created
+16:37:18.995 Wagon wg1 attached to Train tr1
+16:37:18.995 Wagon wg2 attached to Train tr1
+16:37:18.995 Train tr1 has 50 seats

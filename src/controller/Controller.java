@@ -285,8 +285,9 @@ public class Controller implements Observable {
 	
 	public void numseatsTrain(String name){
 		Train t = getTrain(name);
-		int numseats = t.getNumseats();
+		
 		if(Controller.getInstance().checkTrains(name)){
+			int numseats = t.getNumseats();
 			log.add("Train " + name + " has " + numseats + " seats");
 			try {
 				addToLogFile("Train " + name + " has " + numseats + " seats");
@@ -302,8 +303,9 @@ public class Controller implements Observable {
 	
 	public void numseatsWagon(String name){
 		Wagon w = getWagon(name);
-		int numseats = w.getNumSeats();
+		
 		if(Controller.getInstance().checkWagons(name)){
+			int numseats = w.getNumSeats();
 			log.add("Wagon " + name + " has " + numseats + " seats");
 			try {
 				addToLogFile("Wagon " + name + " has " + numseats + " seats");
