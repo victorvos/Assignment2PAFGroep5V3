@@ -24,7 +24,7 @@ public class ListView extends JPanel implements Observer {
 	}
 
 	@Override
-	public void refreshData() {
+	public void reDraw() {
 		Controller s = Controller.getInstance();
 		ArrayList<Train> trains = s.getTrains();
 		ArrayList<Wagon> wagons = s.getWagons();

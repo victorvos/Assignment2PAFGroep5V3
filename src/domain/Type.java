@@ -22,8 +22,8 @@ public class Type implements Observable{
 	
 	public void notifyObservers() {
 		for (int i = 0; i < observers.size(); i++) {
-			Observer observer = (Observer) observers.get(i);
-			observer.refreshData();
+			Observer observer = observers.get(i);
+			observer.reDraw();
 		}
 	}
 	@Override

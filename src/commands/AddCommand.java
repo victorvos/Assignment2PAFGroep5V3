@@ -14,15 +14,15 @@ public class AddCommand implements Command{
 		int spaceFirst = cmd.indexOf(' ');
 		int spaceLast = cmd.lastIndexOf(' ');
 		if(spaceLast < 0){
-			JOptionPane.showMessageDialog(null, "Not a valid commands.\n No train selected.", "ERROR", JOptionPane.ERROR_MESSAGE);
+			System.out.println("Not a valid commands.\n No train selected.");
 		}else{
 			String addItem = cmd.substring(0, spaceFirst);
 			String toItem = cmd.substring(spaceLast+1);
 			if(!Controller.getInstance().checkWagons(addItem)){
-				JOptionPane.showMessageDialog(null, "Wagon "+addItem+" does not exist", "ERROR", JOptionPane.ERROR_MESSAGE);
+				System.out.println("Wagon "+addItem+" does not exist");
 			}
 			else if(!Controller.getInstance().checkTrains(toItem)){
-				JOptionPane.showMessageDialog(null, "Train "+toItem+" does not exist", "ERROR", JOptionPane.ERROR_MESSAGE);
+				System.out.println("Train "+toItem+" does not exist");
 			}else{
 				Controller.getInstance().addWagonToTrain(addItem, toItem);
 			}

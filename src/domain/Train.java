@@ -52,19 +52,19 @@ public class Train implements Observable {
 	@Override
 	public void notifyObservers() {
 		for (int i = 0; i < observers.size(); i++) {
-			Observer observer = (Observer) observers.get(i);
-			observer.refreshData();
+			Observer observer = observers.get(i);
+			observer.reDraw();
 		}
 	}
 
 	@Override
-	public void addViews(Observer obs) {
-		observers.add(obs);
+	public void addViews(Observer observer) {
+		observers.add(observer);
 	}
 
 	@Override
-	public void deleteViews(Observer obs) {
-		observers.remove(obs);
+	public void deleteViews(Observer observer) {
+		observers.remove(observer);
 	}
 
 	public void removeWagon(Wagon wagon) {

@@ -15,10 +15,10 @@ import domain.Wagon;
 @SuppressWarnings("serial")
 public class DrawView extends JPanel implements Observer{
 
-	private int currentTrain=0;
+	private int thisTrain =0;
 	private int OFFSET=120;
-	private int currentWagon = 0;
-	private int TRAINLENGTH = 100;
+	private int thisWagon = 0;
+	private int TLENGTH = 100;
 
 	public DrawView(){
 		init();
@@ -33,21 +33,21 @@ public class DrawView extends JPanel implements Observer{
 	}
 
 	@Override
-	public void refreshData() {
-		currentTrain = 0;
+	public void reDraw() {
+		thisTrain = 0;
 		Controller s = Controller.getInstance();
 		ArrayList<Train> trains = s.getTrains();
 		Graphics g = this.getGraphics();
 		g.setColor(Color.WHITE);
 		g.fillRect(0, 0, this.getWidth(), this.getHeight());
 		for (Train t : trains){
-			drawtrain(t.getId());
-			currentWagon = 1;
+			drawTrain(t.getId());
+			thisWagon = 1;
 			for (Wagon w: t.getWagons()){
 				drawWagon(w.getId());
-				currentWagon++;
+				thisWagon++;
 			}
-			currentTrain++;
+			thisTrain++;
 		}
 
 
@@ -56,26 +56,26 @@ public class DrawView extends JPanel implements Observer{
 	private void drawWagon(String id) {
 		Graphics wagonGraphics = this.getGraphics();
 		wagonGraphics.setColor(Color.LIGHT_GRAY);
-		wagonGraphics.fillRect(30+currentWagon*TRAINLENGTH,80+currentTrain*OFFSET,80,40);
-		wagonGraphics.setColor(Color.BLACK);
-		wagonGraphics.fillRoundRect(35+currentWagon*TRAINLENGTH, 120+currentTrain*OFFSET, 20, 20, 20, 20);
-		wagonGraphics.fillRoundRect(80+currentWagon*TRAINLENGTH, 120+currentTrain*OFFSET, 20, 20, 20, 20);
-		wagonGraphics.drawString(id,40+currentWagon*TRAINLENGTH,105+currentTrain*OFFSET);
+		wagonGraphics.fillRect(30+ thisWagon * TLENGTH,80+ thisTrain *OFFSET,80,40);
+		wagonGraphics.setColor(Color.BLUE);
+		wagonGraphics.fillRoundRect(35+ thisWagon * TLENGTH, 120+ thisTrain *OFFSET, 20, 20, 20, 20);
+		wagonGraphics.fillRoundRect(80+ thisWagon * TLENGTH, 120+ thisTrain *OFFSET, 20, 20, 20, 20);
+		wagonGraphics.drawString(id,40+ thisWagon * TLENGTH,105+ thisTrain *OFFSET);
 		
 	}
 
-	public void drawtrain(String t) {
+	public void drawTrain(String t) {
 		this.setBackground(Color.WHITE);
 		Graphics trainGraphics = this.getGraphics();
 		trainGraphics.setColor(Color.LIGHT_GRAY);
-		trainGraphics.fillRect(30,80+currentTrain*OFFSET,80,40);
-		trainGraphics.fillRect(80,60+currentTrain*OFFSET,30,30);
-		trainGraphics.drawRoundRect(85, 40+currentTrain*OFFSET, 20, 20, 20, 20);
-		trainGraphics.drawRoundRect(85, currentTrain*OFFSET, 40, 40, 40, 40);
-		trainGraphics.setColor(Color.BLACK);
-		trainGraphics.fillRoundRect(35, 120+currentTrain*OFFSET, 20, 20, 20, 20);
-		trainGraphics.fillRoundRect(80, 120+currentTrain*OFFSET, 20, 20, 20, 20);
-		trainGraphics.drawString(t, 40, 105 + currentTrain*OFFSET);
+		trainGraphics.fillRect(30,80+ thisTrain *OFFSET,80,40);
+		trainGraphics.fillRect(80,60+ thisTrain *OFFSET,30,30);
+		trainGraphics.drawRoundRect(85, 40+ thisTrain *OFFSET, 20, 20, 20, 20);
+		trainGraphics.drawRoundRect(85, thisTrain *OFFSET, 40, 40, 40, 40);
+		trainGraphics.setColor(Color.GREEN);
+		trainGraphics.fillRoundRect(35, 120+ thisTrain *OFFSET, 20, 20, 20, 20);
+		trainGraphics.fillRoundRect(80, 120+ thisTrain *OFFSET, 20, 20, 20, 20);
+		trainGraphics.drawString(t, 40, 105 + thisTrain *OFFSET);
 
 
 	}
