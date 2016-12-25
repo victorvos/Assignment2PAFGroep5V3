@@ -24,8 +24,8 @@ public class Main extends JFrame implements ActionListener{
 	private LogView logView = new LogView();
 	private ListView listView = new ListView();
 	private JPanel commandPanel = new JPanel();
-	private TextField command_text_box = new TextField("", 40);
-	private JButton command_button = new JButton("execute");
+	private TextField commandTextField = new TextField("", 40);
+	private JButton commandButton = new JButton("execute");
 	private JPanel headPanel = new JPanel();
 
 	public static void main(String[] args) 
@@ -39,25 +39,25 @@ public class Main extends JFrame implements ActionListener{
 	}
 
 	public Main(){
-		initGUI();   
+		init();
 		Controller.getInstance(drawView, listView, logView);
 		Controller.getInstance().addViews(logView);
 	}
 
-	public void initGUI(){
+	public void init(){
 
 		headPanel.setLayout(new BorderLayout());
-		headPanel.setSize(new Dimension(600, 600));
+		headPanel.setSize(new Dimension(800, 600));
 		
 		drawView.setPreferredSize(new Dimension(600, 300));
-		logView.setPreferredSize(new Dimension(400, 200));
-		listView.setPreferredSize(new Dimension(300, 200));
+		logView.setPreferredSize(new Dimension(500, 300));
+		listView.setPreferredSize(new Dimension(300, 300));
 		commandPanel.setPreferredSize(new Dimension(300, 100));
 		
-		commandPanel.add(command_text_box);
-		commandPanel.add(command_button);
+		commandPanel.add(commandTextField);
+		commandPanel.add(commandButton);
 		
-		command_button.addActionListener(this);
+		commandButton.addActionListener(this);
 		
 		headPanel.add(drawView, BorderLayout.NORTH);
 		headPanel.add(logView, BorderLayout.EAST);
@@ -77,8 +77,8 @@ public class Main extends JFrame implements ActionListener{
 	}
 
 	public void actionPerformed(ActionEvent e){
-		if(!command_text_box.equals("")){
-			String command = command_text_box.getText();
+		if(!commandTextField.equals("")){
+			String command = commandTextField.getText();
 			ControllerCommand f = new ControllerCommand(command);
 			f.createCommand();
 			
