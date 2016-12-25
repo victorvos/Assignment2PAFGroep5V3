@@ -33,8 +33,7 @@ public class Controller implements Observable {
 		setLogView(logView);
 	}
 
-	public static synchronized Controller getInstance(DrawView drawView, ListView listView,
-													  LogView logView) {
+	public static synchronized Controller getInstance(DrawView drawView, ListView listView, LogView logView) {
 		if (instance == null)
 			instance = new Controller(drawView, listView, logView);
 		return instance;
@@ -203,8 +202,7 @@ public class Controller implements Observable {
 		Boolean delete = true;
 		for (Wagon w : wagons) {
 			if (w.getType().equals(id)) {
-				JOptionPane.showMessageDialog(null, "Type hoort bij een wagon\n Verwijder deze wagon: " + w.getId() + " eerst",
-						"ERROR", JOptionPane.ERROR_MESSAGE);
+				System.out.println("Type hoort bij een wagon. Verwijder deze wagon: " + w.getId() + " eerst");
 				delete = false;
 			}
 		}
@@ -241,16 +239,16 @@ public class Controller implements Observable {
 		log.add(item);
 	}
 
-	public void addWagonToTrain(String wgn, String trn) {
-		Wagon wagon = getWagon(wgn);
-		Train train = getTrain(trn);
-		if (train.checkWagons(wgn)) {
-			log.add(wgn + " hoort al bij " + trn);
+	public void addWagonToTrain(String w, String t) {
+		Wagon wagon = getWagon(w);
+		Train train = getTrain(t);
+		if (train.checkWagons(w)) {
+			log.add(w + " hoort al bij " + t);
 		} else {
 			train.addWagon(wagon);
-			log.add("Wagon "+wgn + " hoort bij Trein " + trn);
+			log.add("Wagon "+w + " hoort bij Trein " + t);
 			try {
-				log("Wagon "+wgn + " hoort bij Trein " + trn);
+				log("Wagon "+w + " hoort bij Trein " + t);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -260,19 +258,19 @@ public class Controller implements Observable {
 
 	}
 
-	public void removeWagonFromTrain(String wgn, String trn) {
-		Wagon wagon = getWagon(wgn);
-		Train train = getTrain(trn);
-		if (train.checkWagons(wgn)) {
+	public void removeWagonFromTrain(String w, String t) {
+		Wagon wagon = getWagon(w);
+		Train train = getTrain(t);
+		if (train.checkWagons(w)) {
 			train.removeWagon(wagon);
-			log.add("Wagon " + wgn + " verwijderd van Trein " + trn);
+			log.add("Wagon " + w + " verwijderd van Trein " + t);
 			try {
-				log("Wagon "+wgn + " verwijderd van Trein " + trn);
+				log("Wagon "+w + " verwijderd van Trein " + t);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		} else {
-			log.add(wgn + " hoort niet bij " + trn);
+			log.add(w + " hoort niet bij " + t);
 		}
 		this.notifyObservers();
 		train.notifyObservers();
