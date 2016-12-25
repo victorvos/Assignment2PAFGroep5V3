@@ -54,28 +54,28 @@ public class DrawView extends JPanel implements Observer{
 	}
 
 	private void drawWagon(String id) {
-		Graphics g = this.getGraphics();
-		g.setColor(Color.LIGHT_GRAY);
-		g.fillRect(30+currentWagon*TRAINLENGTH,80+currentTrain*OFFSET,80,40);
-		g.setColor(Color.BLACK);
-		g.fillRoundRect(35+currentWagon*TRAINLENGTH, 120+currentTrain*OFFSET, 20, 20, 20, 20);
-		g.fillRoundRect(80+currentWagon*TRAINLENGTH, 120+currentTrain*OFFSET, 20, 20, 20, 20);
-		g.drawString(id,40+currentWagon*TRAINLENGTH,105+currentTrain*OFFSET);
+		Graphics wagonGraphics = this.getGraphics();
+		wagonGraphics.setColor(Color.LIGHT_GRAY);
+		wagonGraphics.fillRect(30+currentWagon*TRAINLENGTH,80+currentTrain*OFFSET,80,40);
+		wagonGraphics.setColor(Color.BLACK);
+		wagonGraphics.fillRoundRect(35+currentWagon*TRAINLENGTH, 120+currentTrain*OFFSET, 20, 20, 20, 20);
+		wagonGraphics.fillRoundRect(80+currentWagon*TRAINLENGTH, 120+currentTrain*OFFSET, 20, 20, 20, 20);
+		wagonGraphics.drawString(id,40+currentWagon*TRAINLENGTH,105+currentTrain*OFFSET);
 		
 	}
 
 	public void drawtrain(String t) {
 		this.setBackground(Color.WHITE);
-		Graphics g = this.getGraphics();
-		g.setColor(Color.LIGHT_GRAY);
-		g.fillRect(30,80+currentTrain*OFFSET,80,40);
-		g.fillRect(80,60+currentTrain*OFFSET,30,30);
-		g.drawRoundRect(85, 40+currentTrain*OFFSET, 20, 20, 20, 20);
-		g.drawRoundRect(85, currentTrain*OFFSET, 40, 40, 40, 40);
-		g.setColor(Color.BLACK);
-		g.fillRoundRect(35, 120+currentTrain*OFFSET, 20, 20, 20, 20);
-		g.fillRoundRect(80, 120+currentTrain*OFFSET, 20, 20, 20, 20);
-		g.drawString(t, 40, 105 + currentTrain*OFFSET);
+		Graphics trainGraphics = this.getGraphics();
+		trainGraphics.setColor(Color.LIGHT_GRAY);
+		trainGraphics.fillRect(30,80+currentTrain*OFFSET,80,40);
+		trainGraphics.fillRect(80,60+currentTrain*OFFSET,30,30);
+		trainGraphics.drawRoundRect(85, 40+currentTrain*OFFSET, 20, 20, 20, 20);
+		trainGraphics.drawRoundRect(85, currentTrain*OFFSET, 40, 40, 40, 40);
+		trainGraphics.setColor(Color.BLACK);
+		trainGraphics.fillRoundRect(35, 120+currentTrain*OFFSET, 20, 20, 20, 20);
+		trainGraphics.fillRoundRect(80, 120+currentTrain*OFFSET, 20, 20, 20, 20);
+		trainGraphics.drawString(t, 40, 105 + currentTrain*OFFSET);
 
 
 	}

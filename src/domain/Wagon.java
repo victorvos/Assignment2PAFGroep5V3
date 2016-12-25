@@ -39,7 +39,6 @@ public class Wagon implements Observable {
 	}
 	
 	public void notifyObservers() {
-		// Send notify to all Observers
 		for (int i = 0; i < observers.size(); i++) {
 			Observer observer = (Observer) observers.get(i);
 			observer.refreshData();
@@ -57,7 +56,7 @@ public class Wagon implements Observable {
 	}
 	
 	@Override
-	public void unRegister(Observer obs) {
+	public void deleteViews(Observer obs) {
 		observers.remove(obs);	
 	}
 	

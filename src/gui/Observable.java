@@ -5,5 +5,5 @@ public interface Observable {
 
 	public void addViews(Observer obs);
 
-	public void unRegister(Observer obs);
+	public void deleteViews(Observer obs);
 }

@@ -5,21 +5,13 @@ import gui.Observable;
 import gui.Observer;
 
 public class Train implements Observable {
-	private ArrayList<Wagon> wagons = new ArrayList<Wagon>();
+	private ArrayList<Wagon> wagons = new ArrayList<>();
 	private String id;
-	private ArrayList<Observer> observers = new ArrayList<Observer>();
+	private ArrayList<Observer> observers = new ArrayList<>();
 
 	public Train(String id) {
 		this.id = id;
 		this.notifyObservers();
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public String getId() {
-		return id;
 	}
 
 	public void addWagon(Wagon wagon) {
@@ -49,9 +41,16 @@ public class Train implements Observable {
 		return false;
 	}
 
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getId() {
+		return id;
+	}
+
 	@Override
 	public void notifyObservers() {
-		// Send notify to all Observers
 		for (int i = 0; i < observers.size(); i++) {
 			Observer observer = (Observer) observers.get(i);
 			observer.refreshData();
@@ -64,7 +63,7 @@ public class Train implements Observable {
 	}
 
 	@Override
-	public void unRegister(Observer obs) {
+	public void deleteViews(Observer obs) {
 		observers.remove(obs);
 	}
 

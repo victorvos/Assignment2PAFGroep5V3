@@ -15,16 +15,16 @@ public class NewCommand implements Command{
 	public void execute(String cmd) {
 		int space = cmd.indexOf(' ');
 		if(space > 0){
-			String type = cmd.substring(0, space);
+			String substring1 = cmd.substring(0, space);
 			String id = cmd.substring((space+1));
-			if(type.equalsIgnoreCase("train")){
+			if(substring1.equalsIgnoreCase("train")){
 				if(Controller.getInstance().checkTrains(id)){
 					JOptionPane.showMessageDialog(null, "Train "+id+" already exists", "ERROR", JOptionPane.ERROR_MESSAGE);
 				}else{
 					this.createTrain(id);
 				}
 				
-			}else if(type.equalsIgnoreCase("wagon")){
+			}else if(substring1.equalsIgnoreCase("wagon")){
 				if(cmd.indexOf("numseats") > 1){
 					String numseats = cmd.split(" ")[4];
 					int seatsint = Integer.parseInt(numseats);
@@ -34,7 +34,7 @@ public class NewCommand implements Command{
 					this.createWagon(id, 20);	
 				}
 				
-			}else if(type.equalsIgnoreCase("type")){
+			}else if(substring1.equalsIgnoreCase("type")){
 				if(Controller.getInstance().checkTypes(id)){
 					JOptionPane.showMessageDialog(null, "Type "+id+" already exists", "ERROR", JOptionPane.ERROR_MESSAGE);
 				}else{

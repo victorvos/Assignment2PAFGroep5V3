@@ -27,14 +27,15 @@ public class Type implements Observable{
 		}
 	}
 	@Override
-	public void addViews(Observer obs) {
-		observers.add(obs);
+	public void addViews(Observer observer) {
+		observers.add(observer);
 	}
 
 	@Override
-	public void unRegister(Observer obs) {
-		observers.remove(obs);
+	public void deleteViews(Observer observer) {
+		observers.remove(observer);
 	}
+
 	public int getNumberOfSeats() {
 		return numberOfSeats;
 	}

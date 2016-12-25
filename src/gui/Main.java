@@ -50,7 +50,7 @@ public class Main extends JFrame implements ActionListener{
 		headPanel.setSize(new Dimension(800, 600));
 		
 		drawView.setPreferredSize(new Dimension(600, 300));
-		logView.setPreferredSize(new Dimension(500, 300));
+		logView.setPreferredSize(new Dimension(400, 300));
 		listView.setPreferredSize(new Dimension(300, 300));
 		commandPanel.setPreferredSize(new Dimension(300, 100));
 		

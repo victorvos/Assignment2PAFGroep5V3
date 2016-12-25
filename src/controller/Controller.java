@@ -64,9 +64,9 @@ public class Controller implements Observable {
 		t.addViews(drawView);
 		t.addViews(listView);
 		trains.add(t);
-		log.add("Train " + t.getId() + " created");
+		log.add("Trein " + t.getId() + " aangemaakt");
 		try {
-			log("Train " + t.getId() + " created");
+			log("Trein " + t.getId() + " aangemaakt");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -79,9 +79,9 @@ public class Controller implements Observable {
 		w.addViews(drawView);
 		w.addViews(listView);
 		wagons.add(w);
-		log.add("Wagon " + w.getId() + " created with " + numseats + " seats");
+		log.add("Wagon " + w.getId() + " aangemaakt met " + numseats + " plaatsen");
 		try {
-			log("Wagon " + w.getId() + " created with " + numseats + " seats");
+			log("Wagon " + w.getId() + " aangemaakt met " + numseats + " plaatsen");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -93,9 +93,9 @@ public class Controller implements Observable {
 		Type t = new Type(id);
 		t.addViews(listView);
 		types.add(t);
-		log.add("Type " + t.getId() + " created");
+		log.add("Type " + t.getId() + " aangemaakt");
 		try {
-			log("Type " + t.getId() + " created");
+			log("Type " + t.getId() + " aangemaakt");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -180,9 +180,9 @@ public class Controller implements Observable {
 			if (t.checkWagons(id)) {
 				Wagon w = getWagon(id);
 				t.removeWagon(w);
-				log.add(id + " removed from " + t.getId());
+				log.add(id + " verwijderd van " + t.getId());
 				try {
-					log("Wagon " + id + " removed from Train " + t.getId());
+					log("Wagon " + id + " verwijderd van Trein " + t.getId());
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
@@ -190,9 +190,9 @@ public class Controller implements Observable {
 		}
 		Wagon wg = getWagon(id);
 		wagons.remove(wg);
-		log.add(id + " deleted");
+		log.add(id + " verwijderd");
 		try {
-			log("Wagon " + id + " deleted");
+			log("Wagon " + id + " verwijderd");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -204,7 +204,7 @@ public class Controller implements Observable {
 		Boolean delete = true;
 		for (Wagon w : wagons) {
 			if (w.getType().equals(id)) {
-				JOptionPane.showMessageDialog(null, "Type is connected to a wagon\n DeleteCommand " + w.getId() + " first",
+				JOptionPane.showMessageDialog(null, "Type hoort bij een wagon\n Verwijder deze wagon: " + w.getId() + " eerst",
 						"ERROR", JOptionPane.ERROR_MESSAGE);
 				delete = false;
 			}
@@ -212,9 +212,9 @@ public class Controller implements Observable {
 		if (delete) {
 			Type t = getType(id);
 			types.remove(t);
-			log.add("Type: " + id + " deleted");
+			log.add("Type " + id + " verwijderd");
 			try {
-				log("Type " + id + " deleted");
+				log("Type " + id + " verwijderd");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -228,7 +228,7 @@ public class Controller implements Observable {
 	public void deleteTrains(String id) {
 		Train tr = getTrain(id);
 		trains.remove(tr);
-		log.add("Train: " + id + " deleted");
+		log.add("Train " + id + " deleted");
 		try {
 			log("Train " + id + " deleted");
 		} catch (IOException e) {
@@ -316,7 +316,6 @@ public class Controller implements Observable {
 		}
 	
 
-	// Display getters and setters
 	public static void setLogView(LogView logView) {
 		Controller.logView = logView;
 	}
@@ -353,7 +352,7 @@ public class Controller implements Observable {
 
 	}
 
-	public void unRegister(Observer obs) {
+	public void deleteViews(Observer obs) {
 		observers.remove(obs);
 	}
 

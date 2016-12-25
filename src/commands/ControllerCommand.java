@@ -5,38 +5,43 @@ import javax.swing.JOptionPane;
 public class ControllerCommand {
 	
 	private String command;
+
 	public ControllerCommand(String command){
 		this.command = command;
 	}
 	
 	public Command createCommand(){
-		int space = command.indexOf(' ');
+		int plekken = command.indexOf(' ');
 		
-		if(space > 0){
-			String trigger = command.substring(0, space);
-			String command2 = command.substring((space+1));
-			if(trigger.equalsIgnoreCase("new")){
+		if(plekken > 0){
+			String command1 = command.substring(0, plekken);
+			String command2 = command.substring((plekken+1));
+			if(command1.equalsIgnoreCase("new")){
 				return new NewCommand(command2);
 			}
-			else if(trigger.equalsIgnoreCase("add")){
+
+			else if(command1.equalsIgnoreCase("add")){
 				return new AddCommand(command2);
 			}
-			else if(trigger.equalsIgnoreCase("get")){
-				return new GetCommand(command2);
-			}
-			else if(trigger.equalsIgnoreCase("delete")){
+
+			else if(command1.equalsIgnoreCase("delete")){
 				return new DeleteCommand(command2);
 			}
-			else if(trigger.equalsIgnoreCase("remove")){
+
+			else if(command1.equalsIgnoreCase("remove")){
 				return new RemoveCommand(command2);
+			}
+
+			else if(command1.equalsIgnoreCase("get")){
+				return new GetCommand(command2);
 			}
 			
 			else{
-				JOptionPane.showMessageDialog(null, "Not a valid commands", "ERROR", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Geen valide command.", "ERROR", JOptionPane.ERROR_MESSAGE);
 			}
 		}
 		else{
-			JOptionPane.showMessageDialog(null, "Not a valid commands", "ERROR", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Geen valide command.", "ERROR", JOptionPane.ERROR_MESSAGE);
 		}
 		return null;
 	}
