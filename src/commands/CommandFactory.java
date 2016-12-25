@@ -1,12 +1,12 @@
 package commands;
 
-import javax.swing.JOptionPane;
-
-public class ControllerCommand {
-	
+public class CommandFactory {
+	/*Factory pattern die er voor zorgt dat objecten beter aangemaakt kunnen worden waardoor 
+	deze objecten aangeroepen kunnen worden via een gemeenschappelijke class.
+	Het proces van objecten aanmaken wordt hierdoor dus sneller en makkelijker.*/
 	private String command;
 
-	public ControllerCommand(String command){
+	public CommandFactory(String command){
 		this.command = command;
 	}
 	

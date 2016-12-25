@@ -9,9 +9,7 @@ import java.io.IOException;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
-import javax.swing.JOptionPane;
 
-import domain.Train;
 import gui.*;
 
 public class Controller implements Observable {
@@ -19,13 +17,13 @@ public class Controller implements Observable {
 	private static ListView listView;
 	private static LogView logView;
 
-	private ArrayList<Train> trains = new ArrayList<>();
-	private ArrayList<Wagon> wagons = new ArrayList<>();
-	private ArrayList<Type> types = new ArrayList<>();
+	private ArrayList<Train> trains = new ArrayList<Train>();
+	private ArrayList<Wagon> wagons = new ArrayList<Wagon>();
+	private ArrayList<Type> types = new ArrayList<Type>();
 	ArrayList<String> log = new ArrayList<String>();
-	private ArrayList<Observer> observers = new ArrayList<>();
+	private ArrayList<Observer> observers = new ArrayList<Observer>();
 	private static Controller instance;
-	String now = LocalTime.now().toString();
+	
 
 	private Controller(DrawView drawView, ListView listView, LogView logView) {
 		setDrawView(drawView);
@@ -45,7 +43,7 @@ public class Controller implements Observable {
 
 	public void log(String text) throws IOException {
 		File file = new File("logboek.txt");
-
+		String now = LocalTime.now().toString();
 		if (!file.exists()) {
 			file.createNewFile();
 		}

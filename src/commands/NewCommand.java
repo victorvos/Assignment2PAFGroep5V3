@@ -1,7 +1,5 @@
 package commands;
 
-import javax.swing.JOptionPane;
-
 import controller.Controller;
 public class NewCommand implements Command{
 
@@ -68,11 +66,11 @@ public class NewCommand implements Command{
 		if(space < 1){
 			System.out.println("Dit is geen valide command.");
 		}else{
-			String name = cmd.split(" ")[1];
+			String name = cmd.split(" ")[0];
 			if(Controller.getInstance().checkWagons(name)){
 				System.out.println("Wagon "+name+" bestaat al");
 			}else{
-				String typeId = cmd.split(" ")[2];
+				String typeId = cmd.split(" ")[1];
 				if(!Controller.getInstance().checkTypes(typeId)){
 					System.out.println("Type "+typeId+" bestaat nog niet. Maak deze eerst aan.");
 				}else{

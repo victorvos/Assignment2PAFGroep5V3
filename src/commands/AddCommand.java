@@ -1,6 +1,4 @@
 package commands;
-import javax.swing.JOptionPane;
-
 import controller.Controller;
 
 public class AddCommand implements Command{

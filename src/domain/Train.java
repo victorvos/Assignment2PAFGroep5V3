@@ -5,9 +5,9 @@ import gui.Observable;
 import gui.Observer;
 
 public class Train implements Observable {
-	private ArrayList<Wagon> wagons = new ArrayList<>();
+	private ArrayList<Wagon> wagons = new ArrayList<Wagon>();
 	private String id;
-	private ArrayList<Observer> observers = new ArrayList<>();
+	private ArrayList<Observer> observers = new ArrayList<Observer>();
 
 	public Train(String id) {
 		this.id = id;
