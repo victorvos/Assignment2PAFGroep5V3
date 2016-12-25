@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-import command.Factory;
+import commands.ControllerCommand;
 import controller.Controller;
 
 
@@ -20,13 +20,13 @@ import controller.Controller;
 @SuppressWarnings("serial")
 public class Main extends JFrame implements ActionListener{
 
-	private Img_display imgdisplay= new Img_display();
-	private Log_display logdisplay= new Log_display();
-	private List_display listdisplay = new List_display();
-	private JPanel command_panel = new JPanel();
+	private DrawView drawView = new DrawView();
+	private LogView logView = new LogView();
+	private ListView listView = new ListView();
+	private JPanel commandPanel = new JPanel();
 	private TextField command_text_box = new TextField("", 40);
-	private JButton command_button = new JButton("Execute");
-	private JPanel main_panel = new JPanel();
+	private JButton command_button = new JButton("execute");
+	private JPanel headPanel = new JPanel();
 
 	public static void main(String[] args) 
 	{
@@ -40,31 +40,31 @@ public class Main extends JFrame implements ActionListener{
 
 	public Main(){
 		initGUI();   
-		Controller.getInstance(imgdisplay, listdisplay, logdisplay);
-		Controller.getInstance().register(logdisplay);
+		Controller.getInstance(drawView, listView, logView);
+		Controller.getInstance().addViews(logView);
 	}
 
 	public void initGUI(){
 
-		main_panel.setLayout(new BorderLayout());
-		main_panel.setSize(new Dimension(800, 600));
+		headPanel.setLayout(new BorderLayout());
+		headPanel.setSize(new Dimension(600, 600));
 		
-		imgdisplay.setPreferredSize(new Dimension(800, 300));
-		logdisplay.setPreferredSize(new Dimension(350, 200));
-		listdisplay.setPreferredSize(new Dimension(350, 200));
-		command_panel.setPreferredSize(new Dimension(400, 100));
+		drawView.setPreferredSize(new Dimension(600, 300));
+		logView.setPreferredSize(new Dimension(400, 200));
+		listView.setPreferredSize(new Dimension(300, 200));
+		commandPanel.setPreferredSize(new Dimension(300, 100));
 		
-		command_panel.add(command_text_box);
-		command_panel.add(command_button);
+		commandPanel.add(command_text_box);
+		commandPanel.add(command_button);
 		
 		command_button.addActionListener(this);
 		
-		main_panel.add(imgdisplay, BorderLayout.NORTH);
-		main_panel.add(logdisplay, BorderLayout.EAST);
-		main_panel.add(listdisplay, BorderLayout.WEST);
-		main_panel.add(command_panel, BorderLayout.SOUTH);
+		headPanel.add(drawView, BorderLayout.NORTH);
+		headPanel.add(logView, BorderLayout.EAST);
+		headPanel.add(listView, BorderLayout.WEST);
+		headPanel.add(commandPanel, BorderLayout.SOUTH);
 		
-		this.getContentPane().add(main_panel);
+		this.getContentPane().add(headPanel);
 		
 		this.setSize(800, 600);
 		this.setVisible(true);
@@ -79,7 +79,7 @@ public class Main extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e){
 		if(!command_text_box.equals("")){
 			String command = command_text_box.getText();
-			Factory f = new Factory(command);
+			ControllerCommand f = new ControllerCommand(command);
 			f.createCommand();
 			
 		}

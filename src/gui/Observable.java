@@ -3,7 +3,7 @@ package gui;
 public interface Observable {
 	public void notifyObservers();
 
-	public void register(Observer obs);
+	public void addViews(Observer obs);
 
 	public void unRegister(Observer obs);
 }

@@ -12,16 +12,15 @@ import domain.Type;
 import domain.Wagon;
 
 @SuppressWarnings("serial")
-public class List_display extends JPanel implements Observer {
+public class ListView extends JPanel implements Observer {
 	private JTextArea txt1 = new JTextArea(); 
-	public List_display(){
+	public ListView(){
 		this.setLayout(new BorderLayout());
-		this.setBackground(Color.WHITE);
 		this.setOpaque(true);
 		this.setVisible(true);
 		txt1.setEditable(false);
 		this.add(txt1, BorderLayout.NORTH);
-		
+
 	}
 
 	@Override

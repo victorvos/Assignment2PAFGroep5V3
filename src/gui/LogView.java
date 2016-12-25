@@ -13,34 +13,34 @@ import java.util.Collections;
 import javax.swing.JScrollPane;
 
 @SuppressWarnings("serial")
-public class Log_display extends JPanel implements Observer{
-	private JTextArea txt1 = new JTextArea();
-        private JScrollPane jsp = new JScrollPane();
-	public Log_display(){
+public class LogView extends JPanel implements Observer{
+	private JTextArea text = new JTextArea();
+        private JScrollPane jScrollPane = new JScrollPane();
+	public LogView(){
 		this.setLayout(new BorderLayout());
 		this.setBackground(Color.BLACK);
 		this.setOpaque(true);
 		this.setVisible(true);
 
-                txt1.setBackground(Color.BLACK);
-		txt1.setForeground(Color.WHITE);
-                jsp.setBackground(Color.BLACK);
-		jsp.setForeground(Color.WHITE);
-                jsp.setPreferredSize(new Dimension(350, 185));
-		txt1.setEditable(false);
-                jsp.getViewport().add(txt1);
-		this.add(jsp, BorderLayout.NORTH);
+		text.setBackground(Color.BLACK);
+		text.setForeground(Color.WHITE);
+		jScrollPane.setBackground(Color.BLACK);
+		jScrollPane.setForeground(Color.WHITE);
+		jScrollPane.setPreferredSize(new Dimension(350, 185));
+		text.setEditable(false);
+		jScrollPane.getViewport().add(text);
+		this.add(jScrollPane, BorderLayout.NORTH);
 		
 		
 	}
 
 	@Override
 	public void refreshData() {
-		txt1.setText("");
+		text.setText("");
 		ArrayList<String> log = Controller.getInstance().getLog();
                 Collections.reverse(log);
 		for (String s : log){
-			txt1.setText(txt1.getText()+s.toString()+"\n");
+			text.setText(text.getText()+s.toString()+"\n");
 		}
 	}
 }

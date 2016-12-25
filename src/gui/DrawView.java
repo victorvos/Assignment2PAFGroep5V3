@@ -13,15 +13,14 @@ import domain.Wagon;
 
 
 @SuppressWarnings("serial")
-public class Img_display extends JPanel implements Observer{
+public class DrawView extends JPanel implements Observer{
 
 	private int currentTrain=0;
 	private int OFFSET=120;
 	private int currentWagon = 0;
 	private int TRAINLENGTH = 100;
 
-	public Img_display(){
-		
+	public DrawView(){
 		init();
 	}
 	

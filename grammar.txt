@@ -1,6 +1,6 @@
 grammar ;
 
-command 	: New | Add | Get | Delete | Remove;
+commands 	: New | Add | Get | Delete | Remove;
 
 New 	: newtraincommand | newwagoncommand | newtypecommand;
 newtraincommand : 'new' 'train' ID;

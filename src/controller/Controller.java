@@ -15,38 +15,37 @@ import domain.Train;
 import gui.*;
 
 public class Controller implements Observable {
-	private static Img_display img_display;
-	private static List_display list_display;
-	private static Log_display log_display;
+	private static DrawView drawView;
+	private static ListView listView;
+	private static LogView logView;
 
-	private ArrayList<Train> trains = new ArrayList<Train>();
-	private ArrayList<Wagon> wagons = new ArrayList<Wagon>();
-	private ArrayList<Type> types = new ArrayList<Type>();
+	private ArrayList<Train> trains = new ArrayList<>();
+	private ArrayList<Wagon> wagons = new ArrayList<>();
+	private ArrayList<Type> types = new ArrayList<>();
 	ArrayList<String> log = new ArrayList<String>();
-	private ArrayList<Observer> observers = new ArrayList<Observer>();
+	private ArrayList<Observer> observers = new ArrayList<>();
 	private static Controller instance;
 	String now = LocalTime.now().toString();
 
-	private Controller(Img_display imgdsply, List_display lstdsply, Log_display lgdsply) {
-		setImg_display(imgdsply);
-		setList_display(lstdsply);
-		setLog_display(lgdsply);
+	private Controller(DrawView drawView, ListView listView, LogView logView) {
+		setDrawView(drawView);
+		setListView(listView);
+		setLogView(logView);
 	}
 
-	public static synchronized Controller getInstance(Img_display imgdsply, List_display lstdsply,
-			Log_display lgdsply) {
+	public static synchronized Controller getInstance(DrawView drawView, ListView listView,
+													  LogView logView) {
 		if (instance == null)
-			instance = new Controller(imgdsply, lstdsply, lgdsply);
+			instance = new Controller(drawView, listView, logView);
 		return instance;
 	}
 
 	public static synchronized Controller getInstance() {
-		return instance;
+        return instance;
 	}
 
-	// Log Funtion
-	public void addToLogFile(String text) throws IOException {
-		File file = new File("C:\\Users\\Kevin\\git\\Assignment2PAFGroep5V3\\logbook.txt");
+	public void log(String text) throws IOException {
+		File file = new File("logboek.txt");
 
 		if (!file.exists()) {
 			file.createNewFile();
@@ -62,12 +61,12 @@ public class Controller implements Observable {
 	// Create Functions
 	public void createTrain(String id) {
 		Train t = new Train(id);
-		t.register(img_display);
-		t.register(list_display);
+		t.addViews(drawView);
+		t.addViews(listView);
 		trains.add(t);
 		log.add("Train " + t.getId() + " created");
 		try {
-			addToLogFile("Train " + t.getId() + " created");
+			log("Train " + t.getId() + " created");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -77,12 +76,12 @@ public class Controller implements Observable {
 
 	public void createWagon(String id, Type type, int numseats) {
 		Wagon w = new Wagon(id, type, numseats);
-		w.register(img_display);
-		w.register(list_display);
+		w.addViews(drawView);
+		w.addViews(listView);
 		wagons.add(w);
 		log.add("Wagon " + w.getId() + " created with " + numseats + " seats");
 		try {
-			addToLogFile("Wagon " + w.getId() + " created with " + numseats + " seats");
+			log("Wagon " + w.getId() + " created with " + numseats + " seats");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -92,11 +91,11 @@ public class Controller implements Observable {
 
 	public void createType(String id) {
 		Type t = new Type(id);
-		t.register(list_display);
+		t.addViews(listView);
 		types.add(t);
 		log.add("Type " + t.getId() + " created");
 		try {
-			addToLogFile("Type " + t.getId() + " created");
+			log("Type " + t.getId() + " created");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -104,7 +103,6 @@ public class Controller implements Observable {
 		t.notifyObservers();
 	}
 
-	// check whether item exists
 	public boolean checkTrains(String name) {
 		for (Train t : trains) {
 			if (t.getId().equals(name)) {
@@ -132,7 +130,6 @@ public class Controller implements Observable {
 		return false;
 	}
 
-	// Get functions
 	public ArrayList<Train> getTrains() {
 		return trains;
 
@@ -178,7 +175,6 @@ public class Controller implements Observable {
 		return null;
 	}
 
-	// Delete functions
 	public void deleteWagon(String id) {
 		for (Train t : trains) {
 			if (t.checkWagons(id)) {
@@ -186,7 +182,7 @@ public class Controller implements Observable {
 				t.removeWagon(w);
 				log.add(id + " removed from " + t.getId());
 				try {
-					addToLogFile("Wagon " + id + " removed from Train " + t.getId());
+					log("Wagon " + id + " removed from Train " + t.getId());
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
@@ -196,7 +192,7 @@ public class Controller implements Observable {
 		wagons.remove(wg);
 		log.add(id + " deleted");
 		try {
-			addToLogFile("Wagon " + id + " deleted");
+			log("Wagon " + id + " deleted");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -208,7 +204,7 @@ public class Controller implements Observable {
 		Boolean delete = true;
 		for (Wagon w : wagons) {
 			if (w.getType().equals(id)) {
-				JOptionPane.showMessageDialog(null, "Type is connected to a wagon\n Delete " + w.getId() + " first",
+				JOptionPane.showMessageDialog(null, "Type is connected to a wagon\n DeleteCommand " + w.getId() + " first",
 						"ERROR", JOptionPane.ERROR_MESSAGE);
 				delete = false;
 			}
@@ -218,7 +214,7 @@ public class Controller implements Observable {
 			types.remove(t);
 			log.add("Type: " + id + " deleted");
 			try {
-				addToLogFile("Type " + id + " deleted");
+				log("Type " + id + " deleted");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -234,7 +230,7 @@ public class Controller implements Observable {
 		trains.remove(tr);
 		log.add("Train: " + id + " deleted");
 		try {
-			addToLogFile("Train " + id + " deleted");
+			log("Train " + id + " deleted");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -250,12 +246,12 @@ public class Controller implements Observable {
 		Wagon wagon = getWagon(wgn);
 		Train train = getTrain(trn);
 		if (train.checkWagons(wgn)) {
-			log.add(wgn + " already attached to " + trn);
+			log.add(wgn + " already belongs to " + trn);
 		} else {
 			train.addWagon(wagon);
 			log.add("Wagon "+wgn + " attached to Train " + trn);
 			try {
-				addToLogFile("Wagon "+wgn + " attached to Train " + trn);
+				log("Wagon "+wgn + " attached to Train " + trn);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -272,7 +268,7 @@ public class Controller implements Observable {
 			train.removeWagon(wagon);
 			log.add("Wagon " + wgn + " removed from Train " + trn);
 			try {
-				addToLogFile("Wagon "+wgn + " removed to Train" + trn);
+				log("Wagon "+wgn + " removed to Train" + trn);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -290,7 +286,7 @@ public class Controller implements Observable {
 			int numseats = t.getNumseats();
 			log.add("Train " + name + " has " + numseats + " seats");
 			try {
-				addToLogFile("Train " + name + " has " + numseats + " seats");
+				log("Train " + name + " has " + numseats + " seats");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -308,7 +304,7 @@ public class Controller implements Observable {
 			int numseats = w.getNumSeats();
 			log.add("Wagon " + name + " has " + numseats + " seats");
 			try {
-				addToLogFile("Wagon " + name + " has " + numseats + " seats");
+				log("Wagon " + name + " has " + numseats + " seats");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -321,40 +317,38 @@ public class Controller implements Observable {
 	
 
 	// Display getters and setters
-	public static void setLog_display(Log_display log_display) {
-		Controller.log_display = log_display;
+	public static void setLogView(LogView logView) {
+		Controller.logView = logView;
 	}
 
-	public static Log_display getLog_display() {
-		return log_display;
+	public static LogView getLogView() {
+		return logView;
 	}
 
-	public static void setList_display(List_display list_display) {
-		Controller.list_display = list_display;
+	public static void setListView(ListView listView) {
+		Controller.listView = listView;
 	}
 
-	public static List_display getList_display() {
-		return list_display;
+	public static ListView getListView() {
+		return listView;
 	}
 
-	public static void setImg_display(Img_display img_display) {
-		Controller.img_display = img_display;
+	public static void setDrawView(DrawView drawView) {
+		Controller.drawView = drawView;
 	}
 
-	public static Img_display getImg_display() {
-		return img_display;
+	public static DrawView getDrawView() {
+		return drawView;
 	}
 
-	// Observerable functions
 	public void notifyObservers() {
-		// Send notify to all Observers
 		for (int i = 0; i < observers.size(); i++) {
-			Observer observer = (Observer) observers.get(i);
+			Observer observer = observers.get(i);
 			observer.refreshData();
 		}
 	}
 
-	public void register(Observer obs) {
+	public void addViews(Observer obs) {
 		observers.add(obs);
 
 	}

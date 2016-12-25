@@ -59,9 +59,8 @@ public class Train implements Observable {
 	}
 
 	@Override
-	public void register(Observer obs) {
+	public void addViews(Observer obs) {
 		observers.add(obs);
-
 	}
 
 	@Override

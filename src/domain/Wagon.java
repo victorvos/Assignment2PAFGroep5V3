@@ -21,6 +21,7 @@ public class Wagon implements Observable {
 	}
 	
 	public void setNumseats(int numseats){
+
 		this.numseats = numseats;
 	}
 	
@@ -29,6 +30,7 @@ public class Wagon implements Observable {
 	}
 	
 	public void setType(Type type) {
+
 		this.type = type;
 	}
 	
@@ -45,7 +47,7 @@ public class Wagon implements Observable {
 	}
 	
 	@Override
-	public void register(Observer obs) {
+	public void addViews(Observer obs) {
 		observers.add(obs);
 
 	}

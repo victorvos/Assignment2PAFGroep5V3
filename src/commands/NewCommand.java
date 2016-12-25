@@ -1,18 +1,18 @@
-package command;
+package commands;
 
 import javax.swing.JOptionPane;
 
 import controller.Controller;
-public class New implements Command{
+public class NewCommand implements Command{
 
 
 	private String command;
-	public New(String cmd){
+	public NewCommand(String cmd){
 		this.command = cmd;
-		this.Execute(this.command);
+		this.execute(this.command);
 	}
 	
-	public void Execute(String cmd) {
+	public void execute(String cmd) {
 		int space = cmd.indexOf(' ');
 		if(space > 0){
 			String type = cmd.substring(0, space);
@@ -52,10 +52,10 @@ public class New implements Command{
 				}
 				
 			}else{
-				JOptionPane.showMessageDialog(null, "Not a valid command\n Only Train [name] Wagon [name] or Type [name] allowed", "ERROR", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Not a valid commands\n Only Train [name] Wagon [name] or Type [name] allowed", "ERROR", JOptionPane.ERROR_MESSAGE);
 			}
 		}else{
-			JOptionPane.showMessageDialog(null, "Not a valid command\n Only Train [name] Wagon [name] or Type [name] allowed", "ERROR", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Not a valid commands\n Only Train [name] Wagon [name] or Type [name] allowed", "ERROR", JOptionPane.ERROR_MESSAGE);
 		}
 		
 	}
@@ -66,7 +66,7 @@ public class New implements Command{
 		
 		int space = cmd.indexOf(' ');
 		if(space < 1){
-			JOptionPane.showMessageDialog(null, "Not a valid command\n Add a Wagon type", "ERROR", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Not a valid commands\n AddCommand a Wagon type", "ERROR", JOptionPane.ERROR_MESSAGE);
 		}else{
 			String name = cmd.split(" ")[1];
 			if(Controller.getInstance().checkWagons(name)){

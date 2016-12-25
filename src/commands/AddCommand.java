@@ -1,20 +1,20 @@
-package command;
+package commands;
 import javax.swing.JOptionPane;
 
 import controller.Controller;
 
-public class Add implements Command{
+public class AddCommand implements Command{
 
 	private String command;
-	public Add(String cmd){
+	public AddCommand(String cmd){
 		this.command = cmd;
-		this.Execute(this.command);
+		this.execute(this.command);
 	}
-	public void Execute(String cmd) {
+	public void execute(String cmd) {
 		int spaceFirst = cmd.indexOf(' ');
 		int spaceLast = cmd.lastIndexOf(' ');
 		if(spaceLast < 0){
-			JOptionPane.showMessageDialog(null, "Not a valid command.\n No train selected.", "ERROR", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Not a valid commands.\n No train selected.", "ERROR", JOptionPane.ERROR_MESSAGE);
 		}else{
 			String addItem = cmd.substring(0, spaceFirst);
 			String toItem = cmd.substring(spaceLast+1);

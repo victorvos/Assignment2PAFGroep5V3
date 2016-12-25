@@ -1,17 +1,14 @@
-package command;
+package commands;
 
 import javax.swing.JOptionPane;
 
-public class Factory {
+public class ControllerCommand {
 	
 	private String command;
-	public Factory(String command){
+	public ControllerCommand(String command){
 		this.command = command;
 	}
 	
-	public void setCommand(String cmd){
-		this.command = cmd;
-	}
 	public Command createCommand(){
 		int space = command.indexOf(' ');
 		
@@ -19,27 +16,27 @@ public class Factory {
 			String trigger = command.substring(0, space);
 			String command2 = command.substring((space+1));
 			if(trigger.equalsIgnoreCase("new")){
-				return new New(command2);
+				return new NewCommand(command2);
 			}
 			else if(trigger.equalsIgnoreCase("add")){
-				return new Add(command2);
+				return new AddCommand(command2);
 			}
 			else if(trigger.equalsIgnoreCase("get")){
-				return new Get(command2);
+				return new GetCommand(command2);
 			}
 			else if(trigger.equalsIgnoreCase("delete")){
-				return new Delete(command2);
+				return new DeleteCommand(command2);
 			}
 			else if(trigger.equalsIgnoreCase("remove")){
-				return new Remove(command2);
+				return new RemoveCommand(command2);
 			}
 			
 			else{
-				JOptionPane.showMessageDialog(null, "Not a valid command", "ERROR", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Not a valid commands", "ERROR", JOptionPane.ERROR_MESSAGE);
 			}
 		}
 		else{
-			JOptionPane.showMessageDialog(null, "Not a valid command", "ERROR", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Not a valid commands", "ERROR", JOptionPane.ERROR_MESSAGE);
 		}
 		return null;
 	}

@@ -1,22 +1,22 @@
-package command;
+package commands;
 
 import javax.swing.JOptionPane;
 
 import controller.Controller;
 
-public class Delete implements Command{
+public class DeleteCommand implements Command{
 
 	private String command;
-	public Delete(String cmd){
+	public DeleteCommand(String cmd){
 		this.command = cmd;
-		this.Execute(this.command);
+		this.execute(this.command);
 	}
 	@Override
-	public void Execute(String cmd) {
+	public void execute(String cmd) {
 		
 		int space = cmd.indexOf(' ');
 		if(space < 1){
-			JOptionPane.showMessageDialog(null, "Not a valid command", "ERROR", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Not a valid commands", "ERROR", JOptionPane.ERROR_MESSAGE);
 		}else{
 			String type = cmd.substring(0, space);
 			String id = cmd.substring((space+1));
@@ -46,7 +46,7 @@ public class Delete implements Command{
 				
 			}
 			else {
-				JOptionPane.showMessageDialog(null, "Not a valid command", "ERROR", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Not a valid commands", "ERROR", JOptionPane.ERROR_MESSAGE);
 			}
 		}
 		
