@@ -5,3 +5,9 @@
 14:05:21.953 Wagon wg1 aangemaakt met 15 plaatsen
 14:05:21.953 Wagon wg1 hoort bij Trein tr1
 14:09:35.435 Trein tr1 aangemaakt
+15:58:00.221 Trein tr1 aangemaakt
+15:58:00.221 Trein tr2 aangemaakt
+15:58:00.221 Type tp1 aangemaakt
+15:58:00.221 Trein tr3 aangemaakt
+15:58:00.221 Trein tr4 aangemaakt
+15:58:00.221 Trein tr5 aangemaakt

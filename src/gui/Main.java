@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-import commands.ControllerCommand;
+import commands.CommandFactory;
 import controller.Controller;
 
 
@@ -73,7 +73,7 @@ public class Main extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e){
 		if(!commandTextField.equals("")){
 			String command = commandTextField.getText();
-			ControllerCommand controllerCommand = new ControllerCommand(command);
+			CommandFactory controllerCommand = new CommandFactory(command);
 			controllerCommand.createCommand();
 		}
 	}

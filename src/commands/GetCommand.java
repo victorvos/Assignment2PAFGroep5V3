@@ -1,10 +1,7 @@
 package commands;
 
 
-import javax.swing.JOptionPane;
 import controller.Controller;
-import domain.Train;
-import domain.Wagon;
 
 public class GetCommand implements Command{
 
