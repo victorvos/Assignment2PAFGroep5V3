@@ -33,8 +33,7 @@ public class Controller implements Observable {
 		setLogView(logView);
 	}
 
-	public static synchronized Controller getInstance(DrawView drawView, ListView listView,
-													  LogView logView) {
+	public static synchronized Controller getInstance(DrawView drawView, ListView listView, LogView logView) {
 		if (instance == null)
 			instance = new Controller(drawView, listView, logView);
 		return instance;
@@ -58,7 +57,6 @@ public class Controller implements Observable {
 		output.close();
 	}
 
-	// Create Functions
 	public void createTrain(String id) {
 		Train t = new Train(id);
 		t.addViews(drawView);
@@ -204,8 +202,7 @@ public class Controller implements Observable {
 		Boolean delete = true;
 		for (Wagon w : wagons) {
 			if (w.getType().equals(id)) {
-				JOptionPane.showMessageDialog(null, "Type hoort bij een wagon\n Verwijder deze wagon: " + w.getId() + " eerst",
-						"ERROR", JOptionPane.ERROR_MESSAGE);
+				System.out.println("Type hoort bij een wagon. Verwijder deze wagon: " + w.getId() + " eerst");
 				delete = false;
 			}
 		}
@@ -228,9 +225,9 @@ public class Controller implements Observable {
 	public void deleteTrains(String id) {
 		Train tr = getTrain(id);
 		trains.remove(tr);
-		log.add("Train " + id + " deleted");
+		log.add("Train " + id + " verwijderd");
 		try {
-			log("Train " + id + " deleted");
+			log("Train " + id + " verwijderd");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -242,16 +239,16 @@ public class Controller implements Observable {
 		log.add(item);
 	}
 
-	public void addWagonToTrain(String wgn, String trn) {
-		Wagon wagon = getWagon(wgn);
-		Train train = getTrain(trn);
-		if (train.checkWagons(wgn)) {
-			log.add(wgn + " already belongs to " + trn);
+	public void addWagonToTrain(String w, String t) {
+		Wagon wagon = getWagon(w);
+		Train train = getTrain(t);
+		if (train.checkWagons(w)) {
+			log.add(w + " hoort al bij " + t);
 		} else {
 			train.addWagon(wagon);
-			log.add("Wagon "+wgn + " attached to Train " + trn);
+			log.add("Wagon "+w + " hoort bij Trein " + t);
 			try {
-				log("Wagon "+wgn + " attached to Train " + trn);
+				log("Wagon "+w + " hoort bij Trein " + t);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -261,19 +258,19 @@ public class Controller implements Observable {
 
 	}
 
-	public void removeWagonFromTrain(String wgn, String trn) {
-		Wagon wagon = getWagon(wgn);
-		Train train = getTrain(trn);
-		if (train.checkWagons(wgn)) {
+	public void removeWagonFromTrain(String w, String t) {
+		Wagon wagon = getWagon(w);
+		Train train = getTrain(t);
+		if (train.checkWagons(w)) {
 			train.removeWagon(wagon);
-			log.add("Wagon " + wgn + " removed from Train " + trn);
+			log.add("Wagon " + w + " verwijderd van Trein " + t);
 			try {
-				log("Wagon "+wgn + " removed to Train" + trn);
+				log("Wagon "+w + " verwijderd van Trein " + t);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		} else {
-			log.add(wgn + " not attached to " + trn);
+			log.add(w + " hoort niet bij " + t);
 		}
 		this.notifyObservers();
 		train.notifyObservers();
@@ -284,14 +281,14 @@ public class Controller implements Observable {
 		
 		if(Controller.getInstance().checkTrains(name)){
 			int numseats = t.getNumseats();
-			log.add("Train " + name + " has " + numseats + " seats");
+			log.add("Train " + name + " heeft " + numseats + " plaatsen");
 			try {
-				log("Train " + name + " has " + numseats + " seats");
+				log("Train " + name + " heeft " + numseats + " plaatsen");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		} else {
-			log.add(" Train does not exist ");
+			log.add(" Trein bestaat niet ");
 		}
 		this.notifyObservers();
 		t.notifyObservers();
@@ -302,9 +299,9 @@ public class Controller implements Observable {
 		
 		if(Controller.getInstance().checkWagons(name)){
 			int numseats = w.getNumSeats();
-			log.add("Wagon " + name + " has " + numseats + " seats");
+			log.add("Wagon " + name + " heeft " + numseats + " plekken");
 			try {
-				log("Wagon " + name + " has " + numseats + " seats");
+				log("Wagon " + name + " heeft " + numseats + " plekken");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -343,17 +340,17 @@ public class Controller implements Observable {
 	public void notifyObservers() {
 		for (int i = 0; i < observers.size(); i++) {
 			Observer observer = observers.get(i);
-			observer.refreshData();
+			observer.reDraw();
 		}
 	}
 
-	public void addViews(Observer obs) {
-		observers.add(obs);
+	public void addViews(Observer observer) {
+		observers.add(observer);
 
 	}
 
-	public void deleteViews(Observer obs) {
-		observers.remove(obs);
+	public void deleteViews(Observer observer) {
+		observers.remove(observer);
 	}
 
 }

@@ -1,0 +1,7 @@
+14:03:48.689 Trein tr1 aangemaakt
+14:04:54.562 Trein tr1 aangemaakt
+14:05:21.953 Trein tr1 aangemaakt
+14:05:21.953 Type tp1 aangemaakt
+14:05:21.953 Wagon wg1 aangemaakt met 15 plaatsen
+14:05:21.953 Wagon wg1 hoort bij Trein tr1
+14:09:35.435 Trein tr1 aangemaakt

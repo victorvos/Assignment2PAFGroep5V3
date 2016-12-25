@@ -37,11 +37,11 @@ public class ControllerCommand {
 			}
 			
 			else{
-				JOptionPane.showMessageDialog(null, "Geen valide command.", "ERROR", JOptionPane.ERROR_MESSAGE);
+				System.out.println("Geen valide command.");
 			}
 		}
 		else{
-			JOptionPane.showMessageDialog(null, "Geen valide command.", "ERROR", JOptionPane.ERROR_MESSAGE);
+			System.out.println("Geen valide command.");
 		}
 		return null;
 	}

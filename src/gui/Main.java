@@ -30,12 +30,9 @@ public class Main extends JFrame implements ActionListener{
 
 	public static void main(String[] args) 
 	{
-
 		Main inst = new Main();
 		inst.setLocationRelativeTo(null);
 		inst.setVisible(true);
-		
-
 	}
 
 	public Main(){
@@ -70,18 +67,14 @@ public class Main extends JFrame implements ActionListener{
 		this.setVisible(true);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-		
-
-
 
 	}
 
 	public void actionPerformed(ActionEvent e){
 		if(!commandTextField.equals("")){
 			String command = commandTextField.getText();
-			ControllerCommand f = new ControllerCommand(command);
-			f.createCommand();
-			
+			ControllerCommand controllerCommand = new ControllerCommand(command);
+			controllerCommand.createCommand();
 		}
 	}
 }

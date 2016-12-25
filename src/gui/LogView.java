@@ -14,9 +14,9 @@ import javax.swing.JScrollPane;
 
 
 public class LogView extends JPanel implements Observer{
-	private JTextArea text = new JTextArea();
-        private JScrollPane jScrollPane = new JScrollPane();
-	public LogView(){
+		private JTextArea text = new JTextArea();
+		private JScrollPane jScrollPane = new JScrollPane();
+		public LogView(){
 		this.setLayout(new BorderLayout());
 		this.setBackground(Color.BLACK);
 		this.setOpaque(true);
@@ -35,7 +35,7 @@ public class LogView extends JPanel implements Observer{
 	}
 
 	@Override
-	public void refreshData() {
+	public void reDraw() {
 		text.setText("");
 		ArrayList<String> log = Controller.getInstance().getLog();
                 Collections.reverse(log);

@@ -16,7 +16,7 @@ public class DeleteCommand implements Command{
 		
 		int space = cmd.indexOf(' ');
 		if(space < 1){
-			JOptionPane.showMessageDialog(null, "Not a valid commands", "ERROR", JOptionPane.ERROR_MESSAGE);
+			System.out.println("Not a valid commands");
 		}else{
 			String type = cmd.substring(0, space);
 			String id = cmd.substring((space+1));
@@ -25,7 +25,7 @@ public class DeleteCommand implements Command{
 				if(Controller.getInstance().checkTrains(id)){
 					Controller.getInstance().deleteTrains(id);
 				}else{
-					JOptionPane.showMessageDialog(null, "Train "+id+" does not exist", "ERROR", JOptionPane.ERROR_MESSAGE);
+					System.out.println("Train "+id+" does not exist");
 				}
 				
 			}
@@ -33,7 +33,7 @@ public class DeleteCommand implements Command{
 				if(Controller.getInstance().checkWagons(id)){
 					Controller.getInstance().deleteWagon(id);
 				}else{
-					JOptionPane.showMessageDialog(null, "Wagon "+id+" does not exist", "ERROR", JOptionPane.ERROR_MESSAGE);
+					System.out.println("Wagon "+id+" does not exist");
 				}
 				
 			}
@@ -41,12 +41,12 @@ public class DeleteCommand implements Command{
 				if(Controller.getInstance().checkTypes(id)){
 					Controller.getInstance().deleteType(id);
 				}else{
-					JOptionPane.showMessageDialog(null, "Type "+id+" does not exist", "ERROR", JOptionPane.ERROR_MESSAGE);
+					System.out.println("Type "+id+" does not exist");
 				}
 				
 			}
 			else {
-				JOptionPane.showMessageDialog(null, "Not a valid commands", "ERROR", JOptionPane.ERROR_MESSAGE);
+				System.out.println("Geen valide command.");
 			}
 		}
 		

@@ -19,7 +19,7 @@ public class NewCommand implements Command{
 			String id = cmd.substring((space+1));
 			if(substring1.equalsIgnoreCase("train")){
 				if(Controller.getInstance().checkTrains(id)){
-					JOptionPane.showMessageDialog(null, "Train "+id+" already exists", "ERROR", JOptionPane.ERROR_MESSAGE);
+					System.out.println("Trein "+id+" bestaat al ");
 				}else{
 					this.createTrain(id);
 				}
@@ -36,7 +36,7 @@ public class NewCommand implements Command{
 				
 			}else if(substring1.equalsIgnoreCase("type")){
 				if(Controller.getInstance().checkTypes(id)){
-					JOptionPane.showMessageDialog(null, "Type "+id+" already exists", "ERROR", JOptionPane.ERROR_MESSAGE);
+					System.out.println("Type "+id+" bestaat al.");
 				}else{
 					if (cmd.indexOf("numseats") > 1){
 						int seatsIndex = cmd.lastIndexOf(' ');
@@ -52,10 +52,10 @@ public class NewCommand implements Command{
 				}
 				
 			}else{
-				JOptionPane.showMessageDialog(null, "Not a valid commands\n Only Train [name] Wagon [name] or Type [name] allowed", "ERROR", JOptionPane.ERROR_MESSAGE);
+				System.out.println("Dit is geen valide command.");
 			}
 		}else{
-			JOptionPane.showMessageDialog(null, "Not a valid commands\n Only Train [name] Wagon [name] or Type [name] allowed", "ERROR", JOptionPane.ERROR_MESSAGE);
+			System.out.println("Dit is geen valide command.");
 		}
 		
 	}
@@ -66,15 +66,15 @@ public class NewCommand implements Command{
 		
 		int space = cmd.indexOf(' ');
 		if(space < 1){
-			JOptionPane.showMessageDialog(null, "Not a valid commands\n AddCommand a Wagon type", "ERROR", JOptionPane.ERROR_MESSAGE);
+			System.out.println("Dit is geen valide command.");
 		}else{
 			String name = cmd.split(" ")[1];
 			if(Controller.getInstance().checkWagons(name)){
-				JOptionPane.showMessageDialog(null, "Wagon "+name+" already exists", "ERROR", JOptionPane.ERROR_MESSAGE);
+				System.out.println("Wagon "+name+" bestaat al");
 			}else{
 				String typeId = cmd.split(" ")[2];
 				if(!Controller.getInstance().checkTypes(typeId)){
-					JOptionPane.showMessageDialog(null, "Type "+typeId+" does not exist\n Create type first", "ERROR", JOptionPane.ERROR_MESSAGE);
+					System.out.println("Type "+typeId+" bestaat nog niet. Maak deze eerst aan.");
 				}else{
 					Controller.getInstance().createWagon(name, Controller.getInstance().getType(typeId),numseats);
 				}
