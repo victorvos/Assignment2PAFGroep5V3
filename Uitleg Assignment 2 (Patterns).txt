@@ -1,8 +1,9 @@
 Observer Pattern:
 
 Dit houd de lijsten met treinen typen en wagons in de gaten (de veranderingen),
-zodat op het moment dat de methode draw() wrpdt aangeroepen alles m.b.t. van deze informatie compleet is.
-Dit word gerealiseerd met behulp van de methode notifyObservers. De addViews en deleteViews worden gecontroleerd en uiteindelijk getoond.
+zodat op het moment dat alle lijsten van treinen etc up to date zijn voor dat het word uitgetekend.
+Dit zorgt voor een betere verzekering dat alle lijsten in de gaten worden gehouden, en het resultaat dus compleet is.
+
 
 Factory Pattern:
 
