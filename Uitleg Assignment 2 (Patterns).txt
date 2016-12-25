@@ -1,0 +1,10 @@
+Observer Pattern:
+
+Dit houd de lijsten met treinen typen en wagons in de gaten (de veranderingen),
+zodat op het moment dat de methode draw() wrpdt aangeroepen alles m.b.t. van deze informatie compleet is.
+Dit word gerealiseerd met behulp van de methode notifyObservers. De addViews en deleteViews worden gecontroleerd en uiteindelijk getoond.
+
+Factory Pattern:
+
+brengt alle commando's samen in de klasse ControllerCommand, die elk verschillend commando uitvoerd op het patroon wat ingevoerd word.
+Hier hebben we eerst een Interface voor gebruikt genaamd Command, en in de Controllercommand komt dit dus samen en word her aan het eerste woord bepaald welke klasse van de package commands word uitgevoerd.
