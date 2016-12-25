@@ -11,7 +11,7 @@ import domain.Train;
 import domain.Type;
 import domain.Wagon;
 
-@SuppressWarnings("serial")
+
 public class ListView extends JPanel implements Observer {
 	private JTextArea txt1 = new JTextArea(); 
 	public ListView(){

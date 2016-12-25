@@ -12,7 +12,7 @@ import domain.Train;
 import domain.Wagon;
 
 
-@SuppressWarnings("serial")
+
 public class DrawView extends JPanel implements Observer{
 
 	private int currentTrain=0;

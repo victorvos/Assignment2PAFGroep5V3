@@ -12,7 +12,7 @@ import java.awt.Dimension;
 import java.util.Collections;
 import javax.swing.JScrollPane;
 
-@SuppressWarnings("serial")
+
 public class LogView extends JPanel implements Observer{
 	private JTextArea text = new JTextArea();
         private JScrollPane jScrollPane = new JScrollPane();

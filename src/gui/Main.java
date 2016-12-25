@@ -17,7 +17,7 @@ import controller.Controller;
 
 
 
-@SuppressWarnings("serial")
+
 public class Main extends JFrame implements ActionListener{
 
 	private DrawView drawView = new DrawView();
